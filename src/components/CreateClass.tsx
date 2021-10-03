@@ -64,7 +64,12 @@ export default function CreateClass() {
             </div>
           ) : (
             <div>
-              <img src={Close} onClick={close} style={{ width: "35px" }} />
+              <img
+                src={Close}
+                onClick={close}
+                alt="close the modal"
+                style={{ width: "35px" }}
+              />
               <h1 style={{ color: "black" }}>Izveidot klasi</h1>
               <form onSubmit={createClass}>
                 <label style={{ color: "black" }}>Skola</label>
