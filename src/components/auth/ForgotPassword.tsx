@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
-export default function ForgotPassword() {
+export default function ForgotPassword({ children }: any) {
   const { resetPassword } = useAuth();
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -27,7 +27,11 @@ export default function ForgotPassword() {
   return (
     <div>
       <h2 className="authFormTitle">Atjaunot paroli</h2>
+      {message}
+      {error}
+      {loading ? "Ielādējās" : <span />}
       <form onSubmit={handleSubmit} className="authForm">
+        <label>e-pasts ar kuru tika izveidots konts</label>
         <input
           type="email"
           value={email}
@@ -36,6 +40,7 @@ export default function ForgotPassword() {
         />
         <input className="authSubmit" type="submit" value="Atjaunot paroli" />
       </form>
+      {children}
     </div>
   );
 }

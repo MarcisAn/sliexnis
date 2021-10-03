@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 export default function LogOut() {
   const history = useHistory();
-  const { currentUser, logout } = useAuth();
+  const { logout } = useAuth();
 
   async function handleLogout() {
     try {

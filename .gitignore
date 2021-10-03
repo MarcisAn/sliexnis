@@ -22,4 +22,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+notes.md
+
+# firebase
 secrets.json
+.firebaserc
+firebase-debug.log
+.firebase

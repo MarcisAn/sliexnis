@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { firestore } from "../../firebase";
+import firebase from "firebase/app";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -14,7 +14,6 @@ export default function Signup() {
 
   const { signup } = useAuth();
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   async function handleSubmit(e: any) {
@@ -26,14 +25,15 @@ export default function Signup() {
 
     try {
       setError("");
-      setLoading(true);
       await signup(email, password, username);
       history.push("/");
+      firestore.collection("users").doc(firebase.auth().currentUser?.uid).set({
+        email: email,
+        username: username,
+      });
     } catch {
       setError("Failed to create an account");
     }
-
-    setLoading(false);
   }
 
   useEffect(() => {

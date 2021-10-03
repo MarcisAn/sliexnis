@@ -1,15 +1,15 @@
 import PrivateRoute from "./components/PrivateRoute";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
-import Dashboard from "./components/Dashboard";
 import Landing from "./components/Landing";
+import UserContainer from "./components/UserContainer";
 
 function App() {
   return (
     <div>
       <Router>
         <AuthProvider>
-          <PrivateRoute exact path="/" component={Dashboard} />
+          <PrivateRoute exact path="/" component={UserContainer} />
           <Route path="/landing" component={Landing} />
         </AuthProvider>
       </Router>
