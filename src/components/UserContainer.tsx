@@ -39,6 +39,7 @@ export default function UserContainer() {
   function Classes(props: any) {
     const classes = props.value.classes;
     console.log(props);
+    // eslint-disable-next-line
     if (classes == undefined) {
       setClasses(false);
     } else {
@@ -55,12 +56,6 @@ export default function UserContainer() {
     //));
 
     return <span />;
-  }
-
-  function UserClass(props: any) {
-    //const classquery = firestore.collection("classes").doc(props.userclass);
-    //const [value] = useDocumentDataOnce(classquery, { idField: "id" });
-    return <div>{props.userclass}</div>;
   }
 
   function NoClass() {
