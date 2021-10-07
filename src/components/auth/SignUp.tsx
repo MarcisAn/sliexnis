@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { firestore } from "../../firebase";
@@ -8,9 +8,9 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
-  const [username, setUsername] = useState("");
 
-  const [isAvailable, setAvailability] = useState(true);
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
 
   const { signup } = useAuth();
   const [error, setError] = useState("");
@@ -25,6 +25,7 @@ export default function Signup() {
 
     try {
       setError("");
+      const username = name + lastname;
       await signup(email, password, username);
       history.push("/");
       firestore.collection("users").doc(firebase.auth().currentUser?.uid).set({
@@ -35,24 +36,6 @@ export default function Signup() {
       setError("Failed to create an account");
     }
   }
-
-  useEffect(() => {
-    if (username) {
-      firestore
-        .collection("usernames")
-        .doc(username)
-        .get()
-        .then((doc) => {
-          if (doc.exists) {
-            setAvailability(false);
-          } else {
-            // doc.data() will be undefined in this case
-            setAvailability(true);
-          }
-        })
-        .catch((error) => {});
-    }
-  }, [username]);
 
   return (
     <div>
@@ -66,15 +49,16 @@ export default function Signup() {
           onChange={(e) => setEmail(e.target.value)}
           className="authinput"
         />
-        {username ? (
-          <UsernameAvailability isAvailable={isAvailable} username={username} />
-        ) : (
-          <span />
-        )}
-        <label>Lietotājvārds</label>
+        <label>Vārds</label>
         <input
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="authinput"
+        />
+        <label>Uzvārds</label>
+        <input
+          value={lastname}
+          onChange={(e) => setLastname(e.target.value)}
           className="authinput"
         />
         <label>Parole</label>
@@ -94,16 +78,5 @@ export default function Signup() {
         <input className="authSubmit" value="Reģistrēties" type="submit" />
       </form>
     </div>
-  );
-}
-function UsernameAvailability(props: any) {
-  return (
-    <>
-      {props.isAvailable ? (
-        <p style={{ color: "green" }}>Lietotājvārds ir pieejams</p>
-      ) : (
-        <p style={{ color: "red" }}>Lietotājvārds nav pieejams</p>
-      )}
-    </>
   );
 }
