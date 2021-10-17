@@ -54,6 +54,8 @@ export default function CreateTask(props: any) {
   }, [selectedType]);
 
   function addTask(e: any, close: any) {
+    console.log(selectedType);
+
     e.preventDefault();
     const taskData = {
       userAdded: firebase.auth().currentUser?.uid,
@@ -73,6 +75,28 @@ export default function CreateTask(props: any) {
         endTime: endTime,
       };
       Object.assign(taskData, endTimeObj);
+    }
+    switch (selectedType) {
+      case "task":
+        const prorityTimeObjTask = {
+          priorityTime: endTime,
+        };
+        Object.assign(taskData, prorityTimeObjTask);
+        break;
+      case "test":
+        const prorityTimeObjTest = {
+          priorityTime: startTime,
+        };
+        Object.assign(taskData, prorityTimeObjTest);
+        break;
+      case "online-lesson":
+        const prorityTimeObjLesson = {
+          priorityTime: startTime,
+        };
+        Object.assign(taskData, prorityTimeObjLesson);
+        break;
+      default:
+        break;
     }
     //eslint-disable-next-line
     if (selectedSubject != "--") {
