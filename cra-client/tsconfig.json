@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "target": "es5",
@@ -22,5 +23,5 @@
   },
   "include": [
     "src"
-  ]
+, "../sliexnis-nextjs/components/auth"  ]
 }

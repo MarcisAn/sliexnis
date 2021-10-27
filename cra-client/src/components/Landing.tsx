@@ -1,4 +1,4 @@
-import Auth from "./auth/Auth";
+import Auth from "../../../sliexnis-nextjs/components/auth/Auth";
 import "../styles/landing.scss";
 
 export default function Landing() {

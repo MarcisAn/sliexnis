@@ -1,0 +1,17 @@
+.auth {
+  background-color: rgb(238, 150, 18);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  h2 {
+    cursor: pointer;
+    height: 100%;
+    margin: 0;
+    padding: 0.3em;
+    transition: 100ms;
+    &:hover {
+      text-decoration: underline;
+      background: #5c5c5c;
+    }
+  }
+}

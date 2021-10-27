@@ -1,36 +1,34 @@
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
 import { firestore } from "../../firebase";
-import firebase from "firebase/app";
+import { getAuth } from "@firebase/auth";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
-
+  const auth = getAuth();
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
 
   const { signup } = useAuth();
   const [error, setError] = useState("");
-  const history = useHistory();
 
   async function handleSubmit(e: any) {
     e.preventDefault();
 
     if (password !== passwordConf) {
-      return setError("Passwords do not match");
+      return setError("Paroles nesakrīt");
     }
 
     try {
       setError("");
-      const username = name + lastname;
+      const username = name + " " + lastname;
       await signup(email, password, username);
-      history.push("/");
-      firestore.collection("users").doc(firebase.auth().currentUser?.uid).set({
+      firestore.collection("users").doc(auth.currentUser?.uid).set({
         email: email,
         username: username,
+        classes: [],
       });
     } catch {
       setError("Failed to create an account");

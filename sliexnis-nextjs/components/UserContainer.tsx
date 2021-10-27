@@ -1,10 +1,11 @@
-import Dashboard from "./Dashboard";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { firestore } from "../firebase";
-import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
 import { useEffect, useState } from "react";
 import CreateClass from "./CreateClass";
-import LogOut from "../../../sliexnis-nextjs/components/auth/LogOut";
+import LogOut from "./auth/LogOut";
+import router from "next/router";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function UserContainer() {
   const userRolesQuery = firestore
@@ -15,38 +16,39 @@ export default function UserContainer() {
   const [isRegistered, setIsRegistered] = useState(false);
   const arrayUnion = firebase.firestore.FieldValue.arrayUnion;
 
-  useEffect(() => {
-    firestore
-      .collection("users")
-      .doc(firebase.auth().currentUser?.uid)
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          setIsRegistered(true);
-        } else {
-          firestore
-            .collection("users")
-            .doc(firebase.auth().currentUser?.uid)
-            .set({
-              email: firebase.auth().currentUser?.email,
-              classes: [],
-            });
-          setIsRegistered(true);
-        }
-      });
-  }, []);
+  //don't ask!
+  //useEffect(() => {
+  //  firestore
+  //    .collection("users")
+  //    .doc(firebase.auth().currentUser?.uid)
+  //    .get()
+  //    .then((doc) => {
+  //      if (doc.exists) {
+  //        setIsRegistered(true);
+  //      } else {
+  //        firestore
+  //          .collection("users")
+  //          .doc(firebase.auth().currentUser?.uid)
+  //          .set({
+  //            email: firebase.auth().currentUser?.email,
+  //            classes: [],
+  //          });
+  //        setIsRegistered(true);
+  //      }
+  //    });
+  //}, []);
 
   function Classes(props: any) {
     const classes = props.value.classes;
     // eslint-disable-next-line
     if (classes == undefined) {
-      setClasses(false);
+      props.setclasses(false);
     } else {
       // eslint-disable-next-line
       if (classes == 0) {
-        setClasses(false);
+        props.setclasses(false);
       } else {
-        setClasses(true);
+        props.setclasses(true);
       }
     }
 
@@ -109,13 +111,24 @@ export default function UserContainer() {
     );
   }
   function UserView() {
+    if (value) {
+      if (Object.keys(value.classes).length > 0) {
+        router.push("/usercontainer/dashboard");
+      } else {
+        return <NoClass />;
+      }
+      return <Classes value={value} setclasses={setClasses} />;
+    } else {
+      return <span />;
+    }
+
     return (
       <div>
-        {value ? <Classes value={value} /> : <span />}
-        {hasClasses ? <Dashboard class={value?.classes[0]} /> : <NoClass />}
+        {value ? <Classes value={value} setclasses={setClasses} /> : <span />}
+        {/*{hasClasses ? <Dashboard class={value?.classes[0]} /> : <NoClass />}*/}
       </div>
     );
   }
 
-  return <div>{isRegistered ? <UserView /> : <span />}</div>;
+  return <UserView />;
 }

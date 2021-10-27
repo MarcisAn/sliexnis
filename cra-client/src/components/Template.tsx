@@ -1,4 +1,4 @@
-import LogOut from "./auth/LogOut";
+import LogOut from "../../../sliexnis-nextjs/components/auth/LogOut";
 import "../styles/template.scss";
 import { Link } from "react-router-dom";
 

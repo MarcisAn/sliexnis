@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { auth, firestore } from "../../../sliexnis-nextjs/firebase";
+import { auth, firestore } from "../firebase";
 
 const AuthContext = React.createContext();
 
@@ -10,6 +10,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [classID, setClassID] = useState("");
 
   function signup(email, password, username) {
     firestore.collection("usernames").doc(username).set({
@@ -55,6 +56,8 @@ export function AuthProvider({ children }) {
     resetPassword,
     updateEmail,
     updatePassword,
+    classID,
+    setClassID,
   };
 
   return (

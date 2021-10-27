@@ -1,14 +1,13 @@
+import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
-
 export default function LogOut() {
-  const history = useHistory();
+  const router = useRouter();
   const { logout } = useAuth();
 
   async function handleLogout() {
     try {
       await logout();
-      history.push("/landing");
+      router.replace("/");
     } catch {}
   }
 

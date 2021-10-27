@@ -1,0 +1,14 @@
+.dashboard {
+  h1 {
+    text-align: center;
+  }
+  nav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(211, 120, 0);
+    a {
+      background-color: rgb(99, 99, 99);
+      padding: 0.4em;
+    }
+  }
+}
