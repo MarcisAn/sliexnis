@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import Template from "../../components/Template";
 import { firestore } from "../../firebase";
 import firebase from "@firebase/app-compat";
@@ -52,50 +52,76 @@ export default function dashboard() {
           done: arrayUnion(user.uid),
         });
     }
-    if (props.done.includes(user.uid)) {
-      return <span />;
-    } else {
-      return (
-        <div className={style.task}>
-          <Head>
-            <title>Sliexnis | Kopskats</title>
-          </Head>
-          <div className={style.taskheader} style={{ marginBottom: "8px" }}>
-            <span style={{ display: "flex", alignItems: "center" }}>
-              <TaskPriority priority={priority} />
-            </span>
 
-            <b>
-              {props.priorityTime &&
-                format_date(
-                  dayjs(props.priorityTime, "YYYY-MM-DD HH:mm").toDate(),
-                  true
-                )}
-            </b>
+    function Task({ isDone }: any) {
+      return (
+        <TaskTypeContainer type={props.type}>
+          <span className={style.subject}>{props.subject}</span>
+          <div className={style.taskbody}>
+            <span style={{ flex: "1" }}>
+              <p className={style.tasktext}>{props.text}</p>
+            </span>
+            {isDone ? (
+              <span />
+            ) : (
+              <div className={style.tasktime}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "end",
+                  }}>
+                  <span
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "right",
+                    }}>
+                    <TaskPriority priority={priority} />
+                  </span>
+
+                  {props.priorityTime &&
+                    format_date(
+                      dayjs(props.priorityTime, "YYYY-MM-DD HH:mm").toDate(),
+                      true
+                    )}
+                  <span>
+                    Atl. dienas:
+                    {diff}
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
-          <div className={style.taskheader}>
-            <span className={style.subject}>{props.subject}</span>
-            <TaskType type={props.type} />
-          </div>
-          <p>
-            <b>Atlikušas dienas: </b>
-            {diff}
-          </p>
-          <p>{props.text}</p>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}>
-            <button
-              onClick={() => taskDone(props.id)}
-              className={style.donebtn}>
-              Pabeigts
-            </button>
+            {isDone ? (
+              <span />
+            ) : (
+              <button
+                onClick={() => taskDone(props.id)}
+                className={style.donebtn}>
+                Pabeigts
+              </button>
+            )}
+
+            <span />
           </div>
+        </TaskTypeContainer>
+      );
+    }
+    if (props.done.includes(user.uid)) {
+      return (
+        <div style={{ opacity: "30%" }}>
+          <Task isDone={true} />
         </div>
       );
+    } else {
+      return <Task isDone={false} />;
     }
   }
   function TaskPriority(props: any) {
@@ -103,37 +129,38 @@ export default function dashboard() {
       case -1:
         return (
           <>
-            <div
+            <span
               className={style.prioritydot}
               style={{
                 backgroundColor: "red",
-              }}
-            />
-            kavēts
+              }}>
+              !!!
+            </span>
           </>
         );
       case 0:
         return (
           <>
-            <div
+            <span
               className={style.prioritydot}
               style={{
                 backgroundColor: "orange",
-              }}
-            />
-            šodien
+              }}>
+              !!
+            </span>
+            !!
           </>
         );
       case 1:
         return (
           <>
-            <div
+            <span
               className={style.prioritydot}
               style={{
                 backgroundColor: "green",
-              }}
-            />
-            nav steidzams
+              }}>
+              !
+            </span>
           </>
         );
 
@@ -141,33 +168,51 @@ export default function dashboard() {
         return <span />;
     }
   }
-  function TaskType(props: any) {
+  function TaskTypeContainer(props: any) {
     switch (props.type) {
       case "online-lesson":
         return (
-          <span className={style.taskType} style={{ background: "#3474eb" }}>
-            Tiešsaistes stunda
-          </span>
+          <div
+            className={style.task}
+            style={{ borderColor: "var(--online-lesson)" }}>
+            <h2
+              className={style.taskType}
+              style={{ color: "var(--online-lesson)" }}>
+              Tiešsaistes stunda
+            </h2>
+            {props.children}
+          </div>
         );
       case "task":
         return (
-          <div className={style.taskType} style={{ background: "orange" }}>
-            Uzdevums
+          <div className={style.task} style={{ borderColor: "var(--task)" }}>
+            <h2 className={style.taskType} style={{ color: "var(--task)" }}>
+              Uzdevums
+            </h2>
+            {props.children}
           </div>
         );
       case "test":
         return (
-          <div className={style.taskType} style={{ background: "green" }}>
-            Kontroldarbs
+          <div className={style.task} style={{ borderColor: "var(--test)" }}>
+            <h2 className={style.taskType} style={{ color: "var(--test)" }}>
+              Kontroldarbs
+            </h2>
+            {props.children}
           </div>
         );
 
       default:
-        return <span />;
+        return (
+          <div>
+            {props.children}
+            {props.type}
+          </div>
+        );
     }
   }
 
-  function Tasks() {
+  function TaskList() {
     const tasksquery = firestore
       .collection("classes")
       .doc(classID)
@@ -195,8 +240,11 @@ export default function dashboard() {
       <Template>
         {classID != "" ? (
           <>
+            <Head>
+              <title>Sliexnis | Kopskats</title>
+            </Head>
             <CreateTask class={classID} />
-            <Tasks />
+            <TaskList />
           </>
         ) : (
           <span />

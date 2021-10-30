@@ -153,7 +153,11 @@ export default function CreateTask(props: any) {
   return (
     <Popup
       modal
-      trigger={<button className="button">Pievienot uzdevumu</button>}
+      trigger={
+        <button className="button" style={{ margin: "1em" }}>
+          Pievienot uzdevumu
+        </button>
+      }
       position="right center"
       className={style.createtask}>
       {(close: any) => (

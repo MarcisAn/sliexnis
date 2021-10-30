@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: #ffffff;
+  background: var(--sliexnis-gray);
   height: 100%;
 }
 a {
@@ -28,7 +28,7 @@ footer {
 }
 :root {
   --sliexnis-red: #cd192a;
-  --sliexnis-gray: #a1a1a1;
+  --sliexnis-gray: #dfdfdf;
   --task: orange;
   --online-lesson: rgb(31, 156, 0);
   --test: rgb(255, 0, 0);
@@ -46,10 +46,29 @@ nav {
     color: white;
   }
 }
+textarea {
+  background: #ffffff;
+  border: 1px solid #464646;
+  box-sizing: border-box;
+  box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.15);
+  outline: none;
+  resize: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
 .button {
   appearance: none;
   border: none;
-  background-color: cornflowerblue;
+  background-color: var(--sliexnis-red);
+  color: rgb(0, 0, 0);
+  padding: 0.4em;
+  background: #ffffff;
+  border: 1px solid #464646;
+  box-sizing: border-box;
+  box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.15);
+  &:hover {
+    background: var(--sliexnis-gray);
+    box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.15);
+  }
 }
 //reactjs-popup
 .popup-content {

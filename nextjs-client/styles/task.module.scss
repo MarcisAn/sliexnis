@@ -1,18 +1,32 @@
 .task {
-  background-color: rgb(220, 224, 226);
+  background-color: rgb(255, 255, 255);
   margin: auto;
   width: 40%;
   color: black;
-  border-radius: 1.1em;
   padding-left: 0.2em;
-  padding-top: 1em;
+  padding-top: 0.3em;
   padding-right: 0.2em;
   padding-bottom: 0.3em;
   margin-bottom: 0.5em;
+  border: 3px solid;
+  border-bottom: 9px solid;
   font-size: larger;
   .taskheader {
     display: flex;
     justify-content: space-between;
+  }
+  .taskbody {
+    display: flex;
+    flex-direction: row;
+    p {
+      font-size: 1rem;
+    }
+    .tasktime {
+      text-align: right;
+      display: flex;
+      flex-direction: row;
+      font-size: 1rem;
+    }
   }
   .subject {
     padding-right: 10%;
@@ -23,8 +37,7 @@
     );
   }
   .taskType {
-    border-radius: 10px;
-    padding: 3px;
+    margin: 0;
   }
   .donebtn {
     background-color: rgb(162, 162, 202);
@@ -39,8 +52,10 @@
   }
 }
 .prioritydot {
-  width: 15px;
-  height: 15px;
+  min-width: 24px;
+  height: 24px;
+  color: white;
+  text-align: center;
   margin-right: 5px;
   border-radius: 100%;
 }

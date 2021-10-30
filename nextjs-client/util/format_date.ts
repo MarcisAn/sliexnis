@@ -1,18 +1,17 @@
 export default function date(time: any, hasTime: boolean) {
     const months = [
-      //lokatīva locījumā
-      "janvāris",
-      "februāris",
-      "marts",
-      "aprīlis",
+      "janv.",
+      "febr.",
+      "mart",
+      "apr.",
       "maijs",
-      "jūnijs",
-      "jūlijs",
-      "augusts",
-      "septembris",
-      "oktobris",
-      "novembris",
-      "decembris",
+      "jūn.",
+      "jūl.",
+      "aug.",
+      "sept.",
+      "okt.",
+      "nov.",
+      "dec.",
     ];
     const month = months[time.getMonth()];
   const date = time.getDate(); 
