@@ -1,14 +1,17 @@
 .dashboard {
-  h1 {
-    text-align: center;
-  }
   nav {
     display: flex;
     justify-content: space-evenly;
-    background-color: rgb(211, 120, 0);
-    a {
-      background-color: rgb(99, 99, 99);
+    flex: 1;
+    background-color: black;
+    h2 {
+      background-color: var(--sliexnis-red);
+      width: 100%;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 0;
       padding: 0.4em;
+      cursor: pointer;
     }
   }
 }

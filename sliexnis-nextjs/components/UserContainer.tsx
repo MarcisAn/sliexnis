@@ -3,8 +3,7 @@ import { firestore } from "../firebase";
 import firebase from "firebase/compat/app";
 import { useEffect, useState } from "react";
 import CreateClass from "./CreateClass";
-import LogOut from "./auth/LogOut";
-import router from "next/router";
+import router, { useRouter } from "next/router";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function UserContainer() {
@@ -15,6 +14,15 @@ export default function UserContainer() {
   const [hasClasses, setClasses] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const arrayUnion = firebase.firestore.FieldValue.arrayUnion;
+  const router = useRouter();
+  const { logout } = useAuth();
+
+  async function handleLogout() {
+    try {
+      await logout();
+      router.replace("/");
+    } catch {}
+  }
 
   //don't ask!
   //useEffect(() => {
@@ -89,7 +97,7 @@ export default function UserContainer() {
     }
     return (
       <div>
-        <LogOut />
+        <button onClick={handleLogout}>Iziet</button>
         <div style={{ textAlign: "center" }}>
           <h1>Labdien!</h1>
           <h2>{value?.name}</h2>

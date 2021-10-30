@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
-
+import style from "../../styles/auth.module.scss";
 export default function Signup() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -15,10 +15,9 @@ export default function Signup() {
     try {
       setError("");
       await login(email, password);
-      router.replace("/dashboard");
+      router.replace("/usercontainer");
     } catch (e) {
       console.log(e);
-
       setError("Parole vai e-pasts ir nepareizs");
     }
   }
@@ -26,30 +25,40 @@ export default function Signup() {
   return (
     <div>
       <div>
-        <h2 className="authFormTitle">Ieiet</h2>
         {error}
-
-        <form className="authForm" onSubmit={handleSubmit}>
-          <label>E-pasts:</label>
+        <form className={style.authForm} onSubmit={handleSubmit}>
           <input
             type="email"
+            placeholder="E-pasts"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="authinput"
           />
+          {/*
           <button
             className="authswitchbtn"
             onClick={(e) => setIsForgotPassword(true)}>
             Aizmirsu paroli
-          </button>
-          <label>Parole</label>
+          </button>*/}
           <input
             type="password"
+            placeholder="Parole"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="authinput"
           />
-          <input className="authSubmit" type="submit" value="Ieiet" />
+          <input
+            className="authSubmit"
+            type="submit"
+            value="pieslēgties →"
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              fontSize: "1.2rem",
+              textAlign: "left",
+              cursor: "pointer",
+            }}
+          />
         </form>
       </div>
     </div>

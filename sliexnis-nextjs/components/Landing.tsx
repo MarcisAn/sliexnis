@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Header from "../assets/header.svg";
+import Image from "next/image";
 import { useState } from "react";
 import styles from "../styles/auth.module.scss";
 import Login from "../components/auth/Login";
@@ -23,11 +24,45 @@ export default function Landing() {
     } else {
       return (
         <div>
-          <h1 style={{ textAlign: "center" }}>Sliexnis</h1>
+          <header>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "1em",
+              }}>
+              <Image src={Header} />
+            </div>
+          </header>
           <div className={styles.auth}>
-            <h2 onClick={() => setSelection("login")}>Pieslēgties</h2>
-            <h2 onClick={() => setSelection("signup")}>Reģistrēties</h2>
-            <h2 onClick={() => setSelection("forgot")}>Aizmirsu paroli</h2>
+            <h2
+              style={
+                selection == "login"
+                  ? { backgroundColor: "white", color: "red" }
+                  : { backgroundColor: "black" }
+              }
+              onClick={() => setSelection("login")}>
+              Pieslēgties
+            </h2>
+            <h2
+              style={
+                selection == "signup"
+                  ? { backgroundColor: "white", color: "red" }
+                  : { backgroundColor: "black" }
+              }
+              onClick={() => setSelection("signup")}>
+              Reģistrēties
+            </h2>
+            <h2
+              style={
+                selection == "forgot"
+                  ? { backgroundColor: "white", color: "red" }
+                  : { backgroundColor: "black" }
+              }
+              onClick={() => setSelection("forgot")}>
+              Aizmirsu paroli
+            </h2>
           </div>
           <Selection />
           <Footer />

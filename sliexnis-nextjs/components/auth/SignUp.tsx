@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { firestore } from "../../firebase";
 import { getAuth } from "@firebase/auth";
+import style from "../../styles/auth.module.scss";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -31,44 +32,44 @@ export default function Signup() {
         classes: [],
       });
     } catch {
-      setError("Failed to create an account");
+      setError("Neizdevās izveidot kontu");
     }
   }
 
   return (
     <div>
-      <h2 className="authFormTitle">Reģistrēties</h2>
       {error}
-      <form className="authForm" onSubmit={handleSubmit}>
-        <label>E-pasts:</label>
+      <form className={style.authForm} onSubmit={handleSubmit}>
         <input
           type="email"
           value={email}
+          placeholder="E-pasts"
           onChange={(e) => setEmail(e.target.value)}
           className="authinput"
         />
-        <label>Vārds</label>
         <input
           value={name}
+          placeholder="Tavs vārds"
           onChange={(e) => setName(e.target.value)}
           className="authinput"
         />
-        <label>Uzvārds</label>
         <input
           value={lastname}
+          placeholder="Tavs uzvārds"
           onChange={(e) => setLastname(e.target.value)}
           className="authinput"
         />
-        <label>Parole</label>
+
         <input
           type="password"
+          placeholder="Parole"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="authinput"
         />
-        <label>Paroles apstiprinājums</label>
         <input
           type="password"
+          placeholder="Paroles apstiprinājums"
           value={passwordConf}
           onChange={(e) => setPasswordConf(e.target.value)}
           className="authinput"

@@ -1,0 +1,28 @@
+header {
+  background: rgb(53, 53, 53);
+  display: flex;
+  justify-content: space-between;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  a {
+    text-decoration: none;
+    background: white;
+    min-width: 5em;
+    margin: 0.4em;
+    padding: 0.3em;
+    color: black;
+  }
+}
+
+footer {
+  background: rgb(73, 73, 73);
+  bottom: 0;
+  width: 100%;
+  a {
+    text-decoration: none;
+    color: blanchedalmond;
+  }
+}

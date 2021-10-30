@@ -1,9 +1,18 @@
 .auth {
-  background-color: rgb(238, 150, 18);
+  background-color: rgb(0, 0, 0);
+  color: #bbbbbb;
   display: flex;
-  flex-direction: row;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    border-bottom: black 1px solid;
+  }
   justify-content: space-around;
+  .active {
+    background-color: var(--sliexnis-red);
+  }
   h2 {
+    width: 100%;
+    text-align: center;
     cursor: pointer;
     height: 100%;
     margin: 0;
@@ -13,5 +22,20 @@
       text-decoration: underline;
       background: #5c5c5c;
     }
+  }
+}
+.authForm {
+  margin-top: 5em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  input {
+    background: #ffffff;
+    border: 1px solid #464646;
+    box-sizing: border-box;
+    box-shadow: inset 0px 5px 0px rgba(0, 0, 0, 0.1);
+    height: 2.5em;
+    width: 80%;
   }
 }

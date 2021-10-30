@@ -5,7 +5,7 @@ import Landing from "../components/Landing";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div style={{ minHeight: "100%" }}>
       <Head>
         <title>Sliexnis</title>
         <meta
