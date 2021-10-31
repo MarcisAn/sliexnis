@@ -1,2 +1,5 @@
 # see .gitignore in subdirecories
 notes.md
+bots/keys.json
+/bots
+bots/main.py
