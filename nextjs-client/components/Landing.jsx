@@ -11,6 +11,8 @@ import Signup from "./auth/SignUp";
 import Footer from "./Footer";
 import { LanguageContext } from "../pages/_app";
 import { useLocalize } from "localize-react";
+import LVimg from "../assets/landing/lv.png";
+import ENimg from "../assets/landing/en.png";
 
 export default function Landing() {
   const [selection, setSelection] = useState("login");
@@ -107,6 +109,9 @@ export default function Landing() {
             </h2>
           </div>
           <Selection />
+          <div style={{ marginTop: "10rem" }}>
+            <Image src={ENimg} className="landing-picture" />
+          </div>
           <Footer />
         </div>
       );
