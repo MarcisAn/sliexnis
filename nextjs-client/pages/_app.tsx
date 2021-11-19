@@ -10,6 +10,7 @@ export const LanguageContext = createContext({});
 
 function App({ Component, pageProps }: AppProps) {
   const [langauge, setLang] = useState(languages[1]);
+
   return (
     <LanguageContext.Provider value={{ langauge, languages, setLang }}>
       <LocalizationProvider

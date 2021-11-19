@@ -2,12 +2,12 @@ import Header from "../assets/header.svg";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import styles from "../styles/auth.module.scss";
-import Login from "../components/auth/Login";
+import Login from "./auth/Login";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "@firebase/auth";
 import firebaseApp from "../firebase";
 import { useRouter } from "next/router";
-import Signup from "../components/auth/SignUp";
+import Signup from "./auth/SignUp";
 import Footer from "./Footer";
 import { LanguageContext } from "../pages/_app";
 import { useLocalize } from "localize-react";
@@ -17,11 +17,10 @@ export default function Landing() {
   const auth = getAuth(firebaseApp);
   const router = useRouter();
   const [user, loading, error] = useAuthState(auth);
-  // eslint-disable-next-line
   const { langauge, languages, setLang } = useContext(LanguageContext);
   const { translate } = useLocalize();
 
-  function LangDot(props: any) {
+  function LangDot(props) {
     return (
       <div
         onClick={props.click}
