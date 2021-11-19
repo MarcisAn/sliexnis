@@ -1,0 +1,30 @@
+{
+  "en": {
+    "terms-of-use": "Terms of use",
+    "privacy-policy": "Privacy policy",
+    "loading": "Loading...",
+    "login": "Login",
+    "signup": "Sign up",
+    "forgot": "Forgot password",
+    "invalid-login": "Invalid e-mail of password",
+    "e-mail": "e-mail",
+    "password": "password",
+    "confirm-password": "confirm password",
+    "your-first-name": "your first name",
+    "your-last-name": "your last name"
+  },
+  "lv": {
+    "terms-of-use": "Lietošanas noteikumi",
+    "privacy-policy": "Privātuma politika",
+    "loading": "Ielādējās...",
+    "login": "Pieslēgties",
+    "signup": "Reģistrēties",
+    "forgot": "Aizmirsu paroli",
+    "invalid-login": "Parole vai e-pasts nepareizs",
+    "e-mail": "e-pasts",
+    "password": "parole",
+    "confirm-password": "apstiprināt paroli",
+    "your-first-name": "tavs vārds",
+    "your-last-name": "tavs uzvārds"
+  }
+}

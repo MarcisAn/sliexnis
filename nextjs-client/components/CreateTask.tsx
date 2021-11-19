@@ -135,7 +135,7 @@ export default function CreateTask(props: any) {
 
   function Time() {
     const numbers = [];
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 60; i++) {
       if (i <= 9) {
         numbers.push("0" + i);
       } else {

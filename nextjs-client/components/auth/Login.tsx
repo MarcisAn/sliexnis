@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
 import style from "../../styles/auth.module.scss";
+import { useLocalize } from "localize-react";
 export default function Signup() {
+  const { translate } = useLocalize();
+
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +21,7 @@ export default function Signup() {
       router.replace("/usercontainer");
     } catch (e) {
       console.log(e);
-      setError("Parole vai e-pasts ir nepareizs");
+      setError(translate("invalid-login"));
     }
   }
 
@@ -29,7 +32,7 @@ export default function Signup() {
         <form className={style.authForm} onSubmit={handleSubmit}>
           <input
             type="email"
-            placeholder="E-pasts"
+            placeholder={translate("e-mail")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="authinput"
@@ -42,7 +45,7 @@ export default function Signup() {
           </button>*/}
           <input
             type="password"
-            placeholder="Parole"
+            placeholder={translate("password")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="authinput"
@@ -50,7 +53,7 @@ export default function Signup() {
           <input
             className="authSubmit"
             type="submit"
-            value="pieslēgties →"
+            value={translate("login") + " →"}
             style={{
               backgroundColor: "black",
               color: "white",

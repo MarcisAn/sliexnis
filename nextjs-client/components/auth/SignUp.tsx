@@ -3,6 +3,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { firestore } from "../../firebase";
 import { getAuth } from "@firebase/auth";
 import style from "../../styles/auth.module.scss";
+import { useLocalize } from "localize-react";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ export default function Signup() {
   const auth = getAuth();
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
+  const { translate } = useLocalize();
 
   const { signup } = useAuth();
   const [error, setError] = useState("");
@@ -43,38 +45,49 @@ export default function Signup() {
         <input
           type="email"
           value={email}
-          placeholder="E-pasts"
+          placeholder={translate("e-mail")}
           onChange={(e) => setEmail(e.target.value)}
           className="authinput"
         />
         <input
           value={name}
-          placeholder="Tavs vārds"
+          placeholder={translate("your-first-name")}
           onChange={(e) => setName(e.target.value)}
           className="authinput"
         />
         <input
           value={lastname}
-          placeholder="Tavs uzvārds"
+          placeholder={translate("your-last-name")}
           onChange={(e) => setLastname(e.target.value)}
           className="authinput"
         />
 
         <input
           type="password"
-          placeholder="Parole"
+          placeholder={translate("password")}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="authinput"
         />
         <input
           type="password"
-          placeholder="Paroles apstiprinājums"
+          placeholder={translate("confirm-password")}
           value={passwordConf}
           onChange={(e) => setPasswordConf(e.target.value)}
           className="authinput"
         />
-        <input className="authSubmit" value="Reģistrēties" type="submit" />
+        <input
+          className="authSubmit"
+          value={translate("signup") + " →"}
+          type="submit"
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            fontSize: "1.2rem",
+            textAlign: "left",
+            cursor: "pointer",
+          }}
+        />
       </form>
     </div>
   );

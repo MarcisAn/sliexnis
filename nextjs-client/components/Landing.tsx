@@ -1,6 +1,6 @@
 import Header from "../assets/header.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "../styles/auth.module.scss";
 import Login from "../components/auth/Login";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -9,14 +9,39 @@ import firebaseApp from "../firebase";
 import { useRouter } from "next/router";
 import Signup from "../components/auth/SignUp";
 import Footer from "./Footer";
+import { LanguageContext } from "../pages/_app";
+import { useLocalize } from "localize-react";
+
 export default function Landing() {
   const [selection, setSelection] = useState("login");
   const auth = getAuth(firebaseApp);
   const router = useRouter();
   const [user, loading, error] = useAuthState(auth);
+  // eslint-disable-next-line
+  const { langauge, languages, setLang } = useContext(LanguageContext);
+  const { translate } = useLocalize();
+
+  function LangDot(props: any) {
+    return (
+      <div
+        onClick={props.click}
+        style={{
+          cursor: "pointer",
+          width: "30px",
+          height: "30px",
+          backgroundColor: props.isActive == true ? "white" : "#e87a6b",
+          border: props.isActive == true ? "2px solid black" : "none",
+          color: props.isActive == true ? "black" : "white",
+          textAlign: "center",
+          lineHeight: "30px",
+        }}>
+        {props.lang}
+      </div>
+    );
+  }
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <h2>{translate("loading")}</h2>;
   } else {
     if (user) {
       router.replace("/usercontainer");
@@ -25,6 +50,24 @@ export default function Landing() {
       return (
         <div>
           <header>
+            <div
+              style={{
+                padding: "1em",
+                display: "flex",
+                flexDirection: "row",
+                gap: "0.5em",
+              }}>
+              <LangDot
+                lang="LV"
+                isActive={langauge == "lv" ? true : false}
+                click={() => setLang("lv")}
+              />
+              <LangDot
+                lang="EN"
+                isActive={langauge == "en" ? true : false}
+                click={() => setLang("en")}
+              />
+            </div>
             <div
               style={{
                 display: "flex",
@@ -43,7 +86,7 @@ export default function Landing() {
                   : { backgroundColor: "black" }
               }
               onClick={() => setSelection("login")}>
-              Pieslēgties
+              {translate("login")}
             </h2>
             <h2
               style={
@@ -52,7 +95,7 @@ export default function Landing() {
                   : { backgroundColor: "black" }
               }
               onClick={() => setSelection("signup")}>
-              Reģistrēties
+              {translate("signup")}
             </h2>
             <h2
               style={
@@ -61,7 +104,7 @@ export default function Landing() {
                   : { backgroundColor: "black" }
               }
               onClick={() => setSelection("forgot")}>
-              Aizmirsu paroli
+              {translate("forgot")}
             </h2>
           </div>
           <Selection />
@@ -80,7 +123,7 @@ export default function Landing() {
         return <Signup />;
         break;
       case "forgot":
-        return <h2>Aizmirsu paroli</h2>;
+        return <h2>{translate("forgot")}</h2>;
         break;
 
       default:
