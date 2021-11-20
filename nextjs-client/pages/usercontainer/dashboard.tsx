@@ -42,7 +42,7 @@ export default function dashboard() {
         priority = -1;
       }
     }
-    function taskDone(taskID: string) {
+    async function taskDone(taskID: string) {
       firestore
         .collection("classes")
         .doc(classID)
@@ -51,6 +51,12 @@ export default function dashboard() {
         .update({
           done: arrayUnion(user.uid),
         });
+      if (process.env.NODE_ENV == "production") {
+        await fetch(
+          "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+            "Darbs pabeigts"
+        );
+      }
     }
 
     function Task({ isDone }: any) {

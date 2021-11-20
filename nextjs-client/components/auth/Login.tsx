@@ -17,11 +17,23 @@ export default function Signup() {
     e.preventDefault();
     try {
       setError("");
+      if (process.env.NODE_ENV == "production") {
+        await fetch(
+          "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+            "Ielogošanās"
+        );
+      }
       await login(email, password);
       router.replace("/usercontainer");
     } catch (e) {
       console.log(e);
       setError(translate("invalid-login"));
+      if (process.env.NODE_ENV == "production") {
+        await fetch(
+          "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+            "Neizdevās ielogoties"
+        );
+      }
     }
   }
 

@@ -6,6 +6,7 @@
     "login": "Login",
     "signup": "Sign up",
     "forgot": "Forgot password",
+    "renew-password": "Renew password",
     "invalid-login": "Invalid e-mail of password",
     "e-mail": "e-mail",
     "password": "password",
@@ -13,7 +14,8 @@
     "your-first-name": "your first name",
     "your-last-name": "your last name",
     "tech-support": "Tech support: ",
-    "info-email": "Contact us: "
+    "info-email": "Contact us: ",
+    "failed-registration": "Failed to sign up"
   },
   "lv": {
     "terms-of-use": "Lietošanas noteikumi",
@@ -22,6 +24,8 @@
     "login": "Pieslēgties",
     "signup": "Reģistrēties",
     "forgot": "Aizmirsu paroli",
+    "renew-password": "Atjaunot paroli",
+
     "invalid-login": "Parole vai e-pasts nepareizs",
     "e-mail": "e-pasts",
     "password": "parole",
@@ -29,6 +33,7 @@
     "your-first-name": "tavs vārds",
     "your-last-name": "tavs uzvārds",
     "tech-support": "Tehniskais atbalsts: ",
-    "info-email": "Sazinies ar mums: "
+    "info-email": "Sazinies ar mums: ",
+    "failed-registration": "Neizdevās reģistrēties"
   }
 }

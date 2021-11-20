@@ -13,6 +13,12 @@ export default function CreateClass() {
 
   function createClass(e: any) {
     e.preventDefault();
+    if (process.env.NODE_ENV == "production") {
+      fetch(
+        "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+          "Klase izveidota"
+      );
+    }
 
     if (school.length < 2) {
       alert("Skolas un klases nosaukumam jābūt garākam par 2 simboliem");

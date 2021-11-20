@@ -1,3 +1,4 @@
+import { useLocalize } from "localize-react";
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -7,6 +8,7 @@ export default function ForgotPassword({ children }: any) {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
+  const { translate } = useLocalize();
 
   async function handleSubmit(e: any) {
     e.preventDefault();
@@ -26,12 +28,12 @@ export default function ForgotPassword({ children }: any) {
 
   return (
     <div>
-      <h2 className="authFormTitle">Atjaunot paroli</h2>
+      <h2 className="authFormTitle">{translate("renew-password")}</h2>
       {message}
       {error}
-      {loading ? "Ielādējās" : <span />}
+      {loading ? translate("loading") : <span />}
       <form onSubmit={handleSubmit} className="authForm">
-        <label>e-pasts ar kuru tika izveidots konts</label>
+        <label>{translate("email")}</label>
         <input
           type="email"
           value={email}

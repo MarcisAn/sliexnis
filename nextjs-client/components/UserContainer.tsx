@@ -21,30 +21,14 @@ export default function UserContainer() {
     try {
       await logout();
       router.replace("/");
+      if (process.env.NODE_ENV == "production") {
+        await fetch(
+          "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+            "Izlogošanās no lietotāja konteinera"
+        );
+      }
     } catch {}
   }
-
-  //don't ask!
-  //useEffect(() => {
-  //  firestore
-  //    .collection("users")
-  //    .doc(firebase.auth().currentUser?.uid)
-  //    .get()
-  //    .then((doc) => {
-  //      if (doc.exists) {
-  //        setIsRegistered(true);
-  //      } else {
-  //        firestore
-  //          .collection("users")
-  //          .doc(firebase.auth().currentUser?.uid)
-  //          .set({
-  //            email: firebase.auth().currentUser?.email,
-  //            classes: [],
-  //          });
-  //        setIsRegistered(true);
-  //      }
-  //    });
-  //}, []);
 
   function Classes(props: any) {
     const classes = props.value.classes;

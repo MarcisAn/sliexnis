@@ -59,6 +59,12 @@ export default function CreateTask(props: any) {
 
   function addTask(e: any, close: any) {
     e.preventDefault();
+    if (process.env.NODE_ENV == "production") {
+      fetch(
+        "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+          "Uzdevums izveidots"
+      );
+    }
     const taskData = {
       userAdded: firebase.auth().currentUser?.uid,
       timeAdded: firebase.firestore.FieldValue.serverTimestamp(),

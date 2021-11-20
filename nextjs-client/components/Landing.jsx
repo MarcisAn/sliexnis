@@ -22,6 +22,15 @@ export default function Landing() {
   const { language, languages, setLang } = useContext(LanguageContext);
   const { translate } = useLocalize();
 
+  const env = process.env.NODE_ENV;
+  if (env == "production") {
+    let message = "sākumlapas apmeklējums";
+    fetch(
+      "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+        message
+    );
+  }
+
   function LangDot(props) {
     return (
       <div
@@ -39,6 +48,27 @@ export default function Landing() {
         {props.lang}
       </div>
     );
+  }
+
+  function setSelectionFn(target) {
+    setSelection(target);
+    if (process.env.NODE_ENV == "production") {
+      fetch(
+        "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+          "sākumlapā pāriets uz " +
+          target
+      );
+    }
+  }
+  function setLangFn(target) {
+    setLang(target);
+    if (process.env.NODE_ENV == "production") {
+      fetch(
+        "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+          "valoda pārslēgta uz " +
+          target
+      );
+    }
   }
 
   if (loading) {
@@ -61,12 +91,12 @@ export default function Landing() {
               <LangDot
                 lang="LV"
                 isActive={language == "lv" ? true : false}
-                click={() => setLang("lv")}
+                click={() => setLangFn("lv")}
               />
               <LangDot
                 lang="EN"
                 isActive={language == "en" ? true : false}
-                click={() => setLang("en")}
+                click={() => setLangFn("en")}
               />
             </div>
             <div
@@ -86,7 +116,7 @@ export default function Landing() {
                   ? { backgroundColor: "white", color: "red" }
                   : { backgroundColor: "black" }
               }
-              onClick={() => setSelection("login")}>
+              onClick={() => setSelectionFn("login")}>
               {translate("login")}
             </h2>
             <h2
@@ -95,7 +125,7 @@ export default function Landing() {
                   ? { backgroundColor: "white", color: "red" }
                   : { backgroundColor: "black" }
               }
-              onClick={() => setSelection("signup")}>
+              onClick={() => setSelectionFn("signup")}>
               {translate("signup")}
             </h2>
             <h2
@@ -104,7 +134,7 @@ export default function Landing() {
                   ? { backgroundColor: "white", color: "red" }
                   : { backgroundColor: "black" }
               }
-              onClick={() => setSelection("forgot")}>
+              onClick={() => setSelectionFn("forgot")}>
               {translate("forgot")}
             </h2>
           </div>

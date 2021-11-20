@@ -27,6 +27,12 @@ export default function Signup() {
     try {
       setError("");
       const username = name + " " + lastname;
+      if (process.env.NODE_ENV == "production") {
+        await fetch(
+          "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+            "Reģistrēšanās"
+        );
+      }
       await signup(email, password, username);
       firestore.collection("users").doc(auth.currentUser?.uid).set({
         email: email,
@@ -34,7 +40,13 @@ export default function Signup() {
         classes: [],
       });
     } catch {
-      setError("Neizdevās izveidot kontu");
+      setError(translate("failed-registration"));
+      if (process.env.NODE_ENV == "production") {
+        await fetch(
+          "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+            "Neizdevās reģistrēties"
+        );
+      }
     }
   }
 
