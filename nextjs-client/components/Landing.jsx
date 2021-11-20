@@ -22,14 +22,16 @@ export default function Landing() {
   const { language, languages, setLang } = useContext(LanguageContext);
   const { translate } = useLocalize();
 
+  useEffect(() => {
+    if (env == "production") {
+      let message = "sākumlapas apmeklējums";
+      fetch(
+        "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+          message
+      );
+    }
+  }, []);
   const env = process.env.NODE_ENV;
-  if (env == "production") {
-    let message = "sākumlapas apmeklējums";
-    fetch(
-      "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
-        message
-    );
-  }
 
   function LangDot(props) {
     return (

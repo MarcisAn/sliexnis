@@ -55,27 +55,25 @@ export default function Footer() {
       <div>
         <Link href="/twitter">
           <a
-            onClick={async function sendMes() {
-              if (process.env.NODE_ENV == "production") {
-                await fetch(
-                  "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
-                    "Uzklikšķināts uz twittera"
-                );
-              }
-            }}>
+            onClick={() =>
+              process.env.NODE_ENV == "production" &&
+              fetch(
+                "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+                  "Uzklikšķināts uz twitter"
+              )
+            }>
             <Image height="40px" width="40px" src={Twitter} />
           </a>
         </Link>
         <Link href="/github">
           <a
-            onClick={async function sendMes() {
-              if (process.env.NODE_ENV == "production") {
-                await fetch(
-                  "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
-                    "Uzklikšķināts uz github"
-                );
-              }
-            }}>
+            onClick={() =>
+              process.env.NODE_ENV == "production" &&
+              fetch(
+                "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+                  "Uzklikšķināts uz github"
+              )
+            }>
             <Image height="40px" width="40px" src={Github} />
           </a>
         </Link>
