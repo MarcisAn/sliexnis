@@ -11,7 +11,9 @@
     "password": "password",
     "confirm-password": "confirm password",
     "your-first-name": "your first name",
-    "your-last-name": "your last name"
+    "your-last-name": "your last name",
+    "tech-support": "Tech support: ",
+    "info-email": "Contact us: "
   },
   "lv": {
     "terms-of-use": "Lietošanas noteikumi",
@@ -25,6 +27,8 @@
     "password": "parole",
     "confirm-password": "apstiprināt paroli",
     "your-first-name": "tavs vārds",
-    "your-last-name": "tavs uzvārds"
+    "your-last-name": "tavs uzvārds",
+    "tech-support": "Tehniskais atbalsts: ",
+    "info-email": "Sazinies ar mums: "
   }
 }

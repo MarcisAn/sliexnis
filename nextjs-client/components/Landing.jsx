@@ -19,7 +19,7 @@ export default function Landing() {
   const auth = getAuth(firebaseApp);
   const router = useRouter();
   const [user, loading, error] = useAuthState(auth);
-  const { langauge, languages, setLang } = useContext(LanguageContext);
+  const { language, languages, setLang } = useContext(LanguageContext);
   const { translate } = useLocalize();
 
   function LangDot(props) {
@@ -60,12 +60,12 @@ export default function Landing() {
               }}>
               <LangDot
                 lang="LV"
-                isActive={langauge == "lv" ? true : false}
+                isActive={language == "lv" ? true : false}
                 click={() => setLang("lv")}
               />
               <LangDot
                 lang="EN"
-                isActive={langauge == "en" ? true : false}
+                isActive={language == "en" ? true : false}
                 click={() => setLang("en")}
               />
             </div>
@@ -110,7 +110,15 @@ export default function Landing() {
           </div>
           <Selection />
           <div style={{ marginTop: "10rem" }}>
-            <Image src={ENimg} className="landing-picture" />
+            {language == "en" ? (
+              <Image
+                layout="responsive"
+                src={ENimg}
+                className="landing-picture"
+              />
+            ) : (
+              <Image src={LVimg} className="landing-picture" />
+            )}
           </div>
           <Footer />
         </div>

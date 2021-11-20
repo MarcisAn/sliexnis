@@ -20,6 +20,14 @@ export default function Footer() {
           {translate("terms-of-use")}
         </a>
       </div>
+      <div style={{ color: "black", display: "flex", flexDirection: "column" }}>
+        <span>
+          <b>{translate("info-email")}</b>info@sliexnis.lv
+        </span>
+        <span>
+          <b>{translate("tech-support")}</b>support@sliexnis.lv
+        </span>
+      </div>
       <div>
         <Link href="/twitter">
           <a>
