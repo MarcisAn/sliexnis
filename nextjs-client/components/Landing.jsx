@@ -1,6 +1,6 @@
 import Header from "../assets/header.svg";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import styles from "../styles/auth.module.scss";
 import Login from "./auth/Login";
 import { useAuthState } from "react-firebase-hooks/auth";
