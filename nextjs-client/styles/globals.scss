@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: white;
+  background: rgb(211, 211, 211);
   height: 100%;
 }
 a {
@@ -105,4 +105,25 @@ textarea {
   right: 0;
   top: 0;
   bottom: 0;
+}
+.landing-tabs {
+  background-color: rgb(119, 119, 119);
+}
+.landing-tab-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  h2 {
+    width: 100%;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(68, 68, 68);
+    }
+  }
+}
+.team {
+  display: flex;
+  justify-content: space-evenly;
 }
