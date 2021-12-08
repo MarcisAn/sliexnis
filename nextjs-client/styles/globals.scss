@@ -139,9 +139,9 @@ textarea {
   }
 }
 .tab-name {
-  background-color: black;
+  background-color: rgb(219, 219, 219);
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .info {
   padding: 1.7em;
@@ -157,4 +157,18 @@ textarea {
 .features {
   text-align: center;
   font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  list-style: circle;
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1em;
+    gap: 20px;
+  }
 }

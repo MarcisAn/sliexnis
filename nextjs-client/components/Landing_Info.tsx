@@ -4,10 +4,19 @@ import A1 from "../assets/icons/temavatars/a1.png";
 import A2 from "../assets/icons/temavatars/a2.png";
 import A3 from "../assets/icons/temavatars/a3.png";
 
+import Bells from "../assets/landing/features/bels.png";
+import Dots from "../assets/landing/features/dots.png";
+import Exlmarks from "../assets/landing/features/exlmarks.png";
+import FOSS from "../assets/landing/features/foss.png";
+import Squeres from "../assets/landing/features/squeres.png";
+import Submit from "../assets/landing/features/submit.png";
+
 export default function Landing_Info() {
   const [selection, setSelection] = useState("idea");
   return (
-    <div>
+    <div style={{ paddingTop: "10em" }}>
+      <h2 className="tab-name">What is SLIEXNIS?</h2>
+
       <div className="info">
         <p>
           “Sliexnis” is your <span className="red">digital diary</span>, which
@@ -35,7 +44,30 @@ export default function Landing_Info() {
 
       <h2 className="tab-name">Features</h2>
       <ul className="features">
-        <li>aa</li>
+        <li>
+          Task and online lesson tracking
+          <Image width="150px" height="32px" src={Dots} />
+        </li>
+        <li>
+          Order tasks by priority
+          <Image width="150px" height="32px" src={Exlmarks} />
+        </li>
+        <li>
+          Reminder notifications
+          <Image width="150px" height="62px" src={Bells} />
+        </li>
+        <li>
+          Calendar
+          <Image width="150px" height="32px" src={Squeres} />
+        </li>
+        <li>
+          Task submission to teachers
+          <Image width="150px" height="32px" src={Submit} />
+        </li>
+        <li>
+          Contact us and share your ideas
+          <Image width="150px" height="32px" src={FOSS} />
+        </li>
       </ul>
 
       <h2 className="tab-name">Team contacts</h2>

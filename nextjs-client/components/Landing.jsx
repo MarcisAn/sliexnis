@@ -39,7 +39,7 @@ export default function Landing() {
     } else {
       return (
         <div>
-          <header>
+          <header style={{ paddingBottom: "0.5em" }}>
             <div
               style={{
                 display: "flex",
@@ -49,6 +49,10 @@ export default function Landing() {
               }}>
               <Image src={Header} />
             </div>
+            <h1
+              style={{ textAlign: "center", margin: 0, fontWeight: "normal" }}>
+              You are on the treshold of knowledge!
+            </h1>
           </header>
 
           <div className={styles.auth}>
