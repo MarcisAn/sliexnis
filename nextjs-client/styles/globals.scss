@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: rgb(211, 211, 211);
+  background: rgb(255, 255, 255);
   height: 100%;
 }
 a {
@@ -125,5 +125,21 @@ textarea {
 }
 .team {
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  .contact {
+    display: flex;
+    flex-direction: column;
+    .name-role {
+      text-align: left;
+    }
+  }
+}
+.tab-name {
+  background-color: black;
+  text-align: center;
+  color: white;
 }

@@ -8,19 +8,28 @@ export default function Landing_Info() {
   const [selection, setSelection] = useState("idea");
   return (
     <div>
-      <h2>Contacts</h2>
+      <h2 className="tab-name">Features</h2>
+
+      <h2 className="tab-name">Team contacts</h2>
       <div className="team">
         <ContactInfoCard
           name="Mārcis Andersons"
           role="Lead developer"
           image={A1}
+          email="marcis@sliexnis.lv"
         />
         <ContactInfoCard
           name="Miķelis Kočāns"
           role="UI/UX designer"
           image={A2}
+          email="mikelis@sliexnis.lv"
         />
-        <ContactInfoCard name="Marta Valnere" role="Accounting" image={A3} />
+        <ContactInfoCard
+          name="Marta Valnere"
+          role="Accounting"
+          email="marta@sliexnis.lv"
+          image={A3}
+        />
       </div>
     </div>
   );
@@ -31,6 +40,7 @@ export default function Landing_Info() {
         <Image src={image} height="350px" width="350px"></Image>
 
         <h2>{props.name}</h2>
+        <u>{props.email}</u>
         <h4>{props.role}</h4>
       </div>
     );
