@@ -8,7 +8,35 @@ export default function Landing_Info() {
   const [selection, setSelection] = useState("idea");
   return (
     <div>
+      <div className="info">
+        <p>
+          “Sliexnis” is your <span className="red">digital diary</span>, which
+          helps you and your class to keep up with remote learning and in-person
+          school work.
+        </p>
+        <p>
+          Add <span className="red">tasks, tests and online lessons.</span>
+          Change their priorities and get notifications for online lessons!
+        </p>
+        <p>
+          “Sliexnis” is an <span className="red">open source</span> app. We are
+          welcoming your contributions in the form of ideas or already developed
+          features. All development is happening at{" "}
+          <a href="https://github.com/marcis-andersons/sliexnis">
+            <u>github</u>
+          </a>
+        </p>
+        <p>
+          Our backend servers run on 100%{" "}
+          <span className="red">renewable energy.</span>
+        </p>
+        <p>You can plan your schoolwork yourself. There is no bureaucracy.</p>
+      </div>
+
       <h2 className="tab-name">Features</h2>
+      <ul className="features">
+        <li>aa</li>
+      </ul>
 
       <h2 className="tab-name">Team contacts</h2>
       <div className="team">
