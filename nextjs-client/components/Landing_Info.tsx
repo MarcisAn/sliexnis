@@ -75,13 +75,13 @@ export default function Landing_Info() {
         <ContactInfoCard
           name="Mārcis Andersons"
           role="Lead developer"
-          image={A1}
+          image={A2}
           email="marcis@sliexnis.lv"
         />
         <ContactInfoCard
           name="Miķelis Kočāns"
           role="UI/UX designer"
-          image={A2}
+          image={A1}
           email="mikelis@sliexnis.lv"
         />
         <ContactInfoCard
