@@ -39,7 +39,6 @@ export default function Landing_Info() {
           Our backend servers run on 100%{" "}
           <span className="red">renewable energy.</span>
         </p>
-        <p>You can plan your schoolwork yourself. There is no bureaucracy.</p>
       </div>
 
       <h2 className="tab-name">Features</h2>
@@ -86,7 +85,7 @@ export default function Landing_Info() {
         />
         <ContactInfoCard
           name="Marta Valnere"
-          role="Accounting"
+          role="Management"
           email="marta@sliexnis.lv"
           image={A3}
         />

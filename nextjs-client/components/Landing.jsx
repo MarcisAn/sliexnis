@@ -50,9 +50,11 @@ export default function Landing() {
               <Image src={Header} />
             </div>
             <h1
-              style={{ textAlign: "center", margin: 0, fontWeight: "normal" }}>
-              You are on the treshold of knowledge!
-            </h1>
+              style={{
+                textAlign: "center",
+                margin: 0,
+                fontWeight: "normal",
+              }}></h1>
           </header>
 
           <div className={styles.auth}>

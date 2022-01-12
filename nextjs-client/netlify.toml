@@ -5,20 +5,8 @@
   force = false
 
 [[redirects]]
-  from = "/privacy-policy"
-  to = "https://www.youtube.com/watch?v=dQw4w9WgXcQ/"
-  status = 301
-  force = false
-
-[[redirects]]
-  from = "/terms-of-use"
-  to = "https://www.youtube.com/watch?v=dQw4w9WgXcQ/"
-  status = 301
-  force = false
-
-[[redirects]]
   from = "/github"
-  to = "https://github.com/marcis-andersons/sliexnis/"
+  to = "https://github.com/MarcisAn/sliexnis/"
   status = 301
   force = false
 

@@ -53,18 +53,6 @@ export default function Footer() {
         </span>
       </div>
       <div>
-        <Link href="/twitter">
-          <a
-            onClick={() =>
-              process.env.NODE_ENV == "production" &&
-              fetch(
-                "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
-                  "Uzklikšķināts uz twitter"
-              )
-            }>
-            <Image height="40px" width="40px" src={Twitter} />
-          </a>
-        </Link>
         <Link href="/github">
           <a
             onClick={() =>

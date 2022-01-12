@@ -11,18 +11,6 @@ module.exports = {
         basePath: false,
       },
       {
-        source: "/privacy-policy",
-        destination: "https://www.youtube.com/watch?v=dQw4w9WgXcQ/",
-        permanent: false,
-        basePath: false,
-      },
-      {
-        source: "/terms-of-use",
-        destination: "https://www.youtube.com/watch?v=dQw4w9WgXcQ/",
-        permanent: false,
-        basePath: false,
-      },
-      {
         source: "/github",
         destination: "https://github.com/marcis-andersons/sliexnis/",
         permanent: false,
