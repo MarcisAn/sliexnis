@@ -23,6 +23,13 @@ export default function Landing() {
   const { language, languages, setLang } = useContext(LanguageContext);
   const { translate } = useLocalize();
 
+  if (process.env.NODE_ENV == "production") {
+    fetch(
+      "https://api.telegram.org/bot2114478706:AAFofCxBbeY9PLXoRRG4enAlmmg7eSODMfA/sendMessage?chat_id=-1001739946551&text=" +
+        "Sāukumlapas apmeklējums"
+    );
+  }
+
   function setSelectionFn(target) {
     setSelection(target);
   }

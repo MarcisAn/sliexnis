@@ -73,7 +73,7 @@ export default function Landing_Info() {
       <div className="team">
         <ContactInfoCard
           name="Mārcis Andersons"
-          role="Lead developer"
+          role="Developer"
           image={A2}
           email="marcis@sliexnis.lv"
         />

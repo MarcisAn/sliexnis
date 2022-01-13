@@ -48,9 +48,6 @@ export default function Footer() {
         <span>
           <b>{translate("info-email")}</b>info@sliexnis.lv
         </span>
-        <span>
-          <b>{translate("tech-support")}</b>support@sliexnis.lv
-        </span>
       </div>
       <div>
         <Link href="/github">
