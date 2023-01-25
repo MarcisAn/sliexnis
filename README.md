@@ -5,5 +5,3 @@
 Sliexnis is an open source school work management tool.
 
 Developed within "Ventspils IT chalange"
-
-[sliexnis.lv](https://sliexnis.lv "Sliexnis website")
